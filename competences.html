@@ -6,6 +6,7 @@
   <title>Compétences — Alexandre Bloch</title>
   <meta name="description" content="Compétences techniques d’Alexandre Bloch : Langages, ML, Data Engineering, Cloud, DevOps." />
   <link rel="stylesheet" href="assets/css/style.css" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet"/>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
     :root {
@@ -20,8 +21,16 @@
     .nav { background: rgba(255,255,255,0.8); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 50; }
     .brand { font-size: 1.25rem; color: var(--text-main); display: flex; align-items: center; gap: 0.5rem; }
     .brand-dot { height: 8px; width: 8px; background: var(--primary); border-radius: 50%; display: inline-block; }
-    .menu a { text-decoration: none; color: var(--text-muted); font-weight: 500; margin-left: 1.5rem; transition: color 0.2s; }
+    .menu a { text-decoration: none; color: var(--text-muted); font-weight: 500; margin-left: 1.5rem; transition: color 0.2s; display: flex; align-items: center; gap: 0.5rem; }
     .menu a:hover, .menu a.active { color: var(--primary); }
+    .menu-icon { display: none; }
+    @media (max-width: 768px) {
+      .nav-inner { flex-direction: column; padding: 1rem; }
+      .menu { width: 100%; justify-content: space-between; margin-top: 1rem; margin-left: 0; }
+      .menu a { margin-left: 0; padding: 0.5rem; }
+      .menu-text { display: none; }
+      .menu-icon { display: block; font-size: 1.5rem; }
+    }
     .section-title { font-size: 2rem; margin-bottom: 1.5rem; color: var(--text-main); }
     .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem; box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s; height: 100%; }
     .card:hover { transform: translateY(-4px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
@@ -37,11 +46,11 @@
     <div class="container nav-inner">
       <div class="brand"><span class="brand-dot"></span> Alexandre Bloch</div>
       <nav class="menu">
-        <a href="index.html">Accueil</a>
-        <a href="experience.html">Expérience</a>
-        <a href="projets.html">Projets académiques</a>
-        <a class="active" href="competences.html">Compétences</a>
-        <a href="loisirs.html">Loisirs</a>
+        <a href="index.html"><i class="ri-home-line menu-icon"></i><span class="menu-text">Accueil</span></a>
+        <a href="experience.html"><i class="ri-briefcase-line menu-icon"></i><span class="menu-text">Expérience</span></a>
+        <a href="projets.html"><i class="ri-code-s-slash-line menu-icon"></i><span class="menu-text">Projets</span></a>
+        <a class="active" href="competences.html"><i class="ri-tools-line menu-icon"></i><span class="menu-text">Compétences</span></a>
+        <a href="loisirs.html"><i class="ri-music-line menu-icon"></i><span class="menu-text">Loisirs</span></a>
       </nav>
     </div>
   </header>

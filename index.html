@@ -6,6 +6,7 @@
   <title>Alexandre Bloch — Data & Machine Learning Engineer</title>
   <meta name="description" content="Portfolio d’Alexandre Bloch — Data & Machine Learning Engineer : expérience, projets académiques, compétences, contact." />
   <link rel="stylesheet" href="assets/css/style.css" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet"/>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
     :root {
@@ -20,10 +21,18 @@
     .nav { background: rgba(255,255,255,0.8); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 50; }
     .brand { font-size: 1.25rem; color: var(--text-main); display: flex; align-items: center; gap: 0.5rem; }
     .brand-dot { height: 8px; width: 8px; background: var(--primary); border-radius: 50%; display: inline-block; }
-    .menu a { text-decoration: none; color: var(--text-muted); font-weight: 500; margin-left: 1.5rem; transition: color 0.2s; }
+    .menu a { text-decoration: none; color: var(--text-muted); font-weight: 500; margin-left: 1.5rem; transition: color 0.2s; display: flex; align-items: center; gap: 0.5rem; }
     .menu a:hover, .menu a.active { color: var(--primary); }
+    .menu-icon { display: none; }
     .hero { padding: 4rem 2rem; display: grid; grid-template-columns: 1fr 350px; gap: 4rem; align-items: center; }
-    @media (max-width: 768px) { .hero { grid-template-columns: 1fr; text-align: center; } }
+    @media (max-width: 768px) {
+      .hero { grid-template-columns: 1fr; text-align: center; padding: 2rem 1rem; }
+      .nav-inner { flex-direction: column; padding: 1rem; }
+      .menu { width: 100%; justify-content: space-between; margin-top: 1rem; margin-left: 0; }
+      .menu a { margin-left: 0; padding: 0.5rem; }
+      .menu-text { display: none; }
+      .menu-icon { display: block; font-size: 1.5rem; }
+    }
     .kicker { text-transform: uppercase; letter-spacing: 0.1em; font-size: 1.1rem; font-weight: 700; color: var(--primary); margin-bottom: 1rem; }
     .hero h1 { font-size: 2.5rem; line-height: 1.2; margin-bottom: 1.5rem; background: linear-gradient(to right, #111827, #4b5563); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     .subtitle { font-size: 1.25rem; color: var(--text-muted); margin-bottom: 2rem; }
@@ -50,11 +59,11 @@
     <div class="container nav-inner">
       <div class="brand"><span class="brand-dot"></span> Alexandre Bloch</div>
       <nav class="menu">
-        <a class="active" href="index.html">Accueil</a>
-        <a href="experience.html">Expérience</a>
-        <a href="projets.html">Projets académiques</a>
-        <a href="competences.html">Compétences</a>
-        <a href="loisirs.html">Loisirs</a>
+        <a class="active" href="index.html"><i class="ri-home-line menu-icon"></i><span class="menu-text">Accueil</span></a>
+        <a href="experience.html"><i class="ri-briefcase-line menu-icon"></i><span class="menu-text">Expérience</span></a>
+        <a href="projets.html"><i class="ri-code-s-slash-line menu-icon"></i><span class="menu-text">Projets</span></a>
+        <a href="competences.html"><i class="ri-tools-line menu-icon"></i><span class="menu-text">Compétences</span></a>
+        <a href="loisirs.html"><i class="ri-music-line menu-icon"></i><span class="menu-text">Loisirs</span></a>
       </nav>
     </div>
   </header>
