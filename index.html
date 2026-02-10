@@ -42,6 +42,9 @@
     .card, .item { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem; box-shadow: var(--shadow); margin-bottom: 2rem; transition: transform 0.2s, box-shadow 0.2s; }
     .card:hover, .item:hover { transform: translateY(-4px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
     .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+    @media (max-width: 768px) {
+      .card-grid { grid-template-columns: 1fr; }
+    }
     .meta { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
     .pill, .badge { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; background: #eff6ff; color: var(--primary); border: 1px solid #dbeafe; margin: 0 0.5rem 0.5rem 0; }
     .badge { background: #f3f4f6; color: var(--text-muted); border-color: #e5e7eb; }
