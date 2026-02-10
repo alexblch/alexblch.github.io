@@ -1,11 +1,98 @@
 <!doctype html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hello World</title>
-  </head>
-  <body>
-    <h1>Hello World</h1>
-  </body>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Alexandre Bloch — Data & Machine Learning Engineer</title>
+  <meta name="description" content="Portfolio d’Alexandre Bloch — Data & Machine Learning Engineer : expérience, projets académiques, compétences, contact." />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand"><span class="brand-dot"></span> Alexandre Bloch</div>
+      <nav class="menu">
+        <a class="active" href="index.html">Accueil</a>
+        <a href="experience.html">Expérience</a>
+        <a href="projets.html">Projets académiques</a>
+        <a href="loisirs.html">Loisirs</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <div class="kicker">Data & Machine Learning Engineer</div>
+        <h1>Je conçois des produits data & IA fiables, du pipeline au déploiement.</h1>
+        <p class="subtitle">
+          Basé en Île-de-France, je travaille sur des pipelines ETL/BI, de la GenAI (RAG, fine-tuning),
+          et des déploiements cloud/DevOps (Docker, Nginx, GCP/OVH).
+        </p>
+
+        <div class="badges">
+          <span class="badge">3 ans d’expérience</span>
+          <span class="badge">Mobilité : Paris & Petite Couronne</span>
+          <span class="badge">Dispo : mi-mars 2026</span>
+        </div>
+
+        <div class="cta">
+          <a class="btn primary" href="experience.html">Voir l’expérience</a>
+          <a class="btn" href="projets.html">Voir les projets</a>
+          <a class="btn" href="mailto:bloch.alexandr@gmail.com">Me contacter</a>
+        </div>
+      </div>
+
+      <div class="profile">
+        <div class="avatar">
+          <!-- BALISE PHOTO : mets ta photo dans assets/img/photo.jpg -->
+          <!-- Si tu n’as pas encore la photo, laisse comme ça -->
+          <img id="profile-photo" src="assets/img/photocvalex.png" alt="Photo de profil d’Alexandre Bloch" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+          <div class="placeholder" style="display:none; place-items:center; width:100%; height:100%;">PHOTO</div>
+        </div>
+
+        <div class="pills">
+          <span class="pill">Python</span>
+          <span class="pill">SQL</span>
+          <span class="pill">PyTorch / TensorFlow</span>
+          <span class="pill">Spark / Airflow</span>
+          <span class="pill">Docker / K8s</span>
+        </div>
+
+        <div class="small">
+          <div><strong>Email</strong> : <a href="mailto:bloch.alexandr@gmail.com">bloch.alexandr@gmail.com</a></div>
+          <div><strong>GitHub</strong> : <a href="https://github.com/alexblch" target="_blank" rel="noreferrer">github.com/alexblch</a></div>
+          <div><strong>LinkedIn</strong> : <a href="https://www.linkedin.com/in/alex-bloch56" target="_blank" rel="noreferrer">/alex-bloch56</a></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card-grid">
+      <div class="card">
+        <h2>Diplômes & certifications</h2>
+        <ul class="list">
+          <li>Mastère spécialisé IA & Big Data (ESGI Paris)</li>
+          <li>Google Cloud Machine Learning Engineer</li>
+          <li>Databricks Certified Data Engineer</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2>Focus</h2>
+        <ul class="list">
+          <li>ETL/BI : SQL Server, Power BI (RLS), Report Server</li>
+          <li>GenAI : RAG, Hugging Face, fine-tuning</li>
+          <li>MLOps/DevOps : Docker, Kubernetes, Nginx, SSL</li>
+        </ul>
+      </div>
+    </section>
+
+    <footer class="footer">
+      © <span id="y"></span> Alexandre Bloch — Portfolio hébergé sur GitHub Pages.
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
 </html>
