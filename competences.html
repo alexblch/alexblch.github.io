@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Compétences — Alexandre Bloch</title>
+  <meta name="description" content="Compétences techniques d’Alexandre Bloch : Langages, ML, Data Engineering, Cloud, DevOps." />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+    :root {
+      --primary: #2563eb; --primary-dark: #1d4ed8;
+      --text-main: #1f2937; --text-muted: #4b5563;
+      --bg-body: #f9fafb; --bg-card: #ffffff;
+      --border: #e5e7eb; --radius: 0.75rem;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+    body { font-family: 'Inter', sans-serif; background: var(--bg-body); color: var(--text-main); line-height: 1.6; }
+    h1, h2, h3, .brand { font-weight: 700; letter-spacing: -0.025em; }
+    .nav { background: rgba(255,255,255,0.8); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 50; }
+    .brand { font-size: 1.25rem; color: var(--text-main); display: flex; align-items: center; gap: 0.5rem; }
+    .brand-dot { height: 8px; width: 8px; background: var(--primary); border-radius: 50%; display: inline-block; }
+    .menu a { text-decoration: none; color: var(--text-muted); font-weight: 500; margin-left: 1.5rem; transition: color 0.2s; }
+    .menu a:hover, .menu a.active { color: var(--primary); }
+    .section-title { font-size: 2rem; margin-bottom: 1.5rem; color: var(--text-main); }
+    .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem; box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s; height: 100%; }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 2rem; }
+    .card h3 { margin-top: 0; margin-bottom: 1rem; color: var(--text-main); font-size: 1.25rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+    .pills { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .pill { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.85rem; font-weight: 500; background: #eff6ff; color: var(--primary); border: 1px solid #dbeafe; }
+    .footer { margin-top: 4rem; padding: 2rem 0; border-top: 1px solid var(--border); color: var(--text-muted); text-align: center; font-size: 0.875rem; }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand"><span class="brand-dot"></span> Alexandre Bloch</div>
+      <nav class="menu">
+        <a href="index.html">Accueil</a>
+        <a href="experience.html">Expérience</a>
+        <a href="projets.html">Projets académiques</a>
+        <a class="active" href="competences.html">Compétences</a>
+        <a href="loisirs.html">Loisirs</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <h2 class="section-title">Compétences techniques</h2>
+
+    <div class="card-grid">
+      <div class="card">
+        <h3>Langages</h3>
+        <div class="pills">
+          <span class="pill">Python</span><span class="pill">SQL</span><span class="pill">R</span><span class="pill">Java</span><span class="pill">Scala</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Machine Learning & IA</h3>
+        <div class="pills">
+          <span class="pill">TensorFlow</span><span class="pill">PyTorch</span><span class="pill">Scikit-learn</span><span class="pill">NLP</span><span class="pill">Hugging Face</span><span class="pill">GAN</span><span class="pill">RAG</span><span class="pill">LLM</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Data Engineering</h3>
+        <div class="pills">
+          <span class="pill">Hadoop</span><span class="pill">Spark (Core & Streaming)</span><span class="pill">Airflow</span><span class="pill">Elasticsearch</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Cloud & DevOps</h3>
+        <div class="pills">
+          <span class="pill">Docker</span><span class="pill">Kubernetes</span><span class="pill">GCP</span><span class="pill">Azure</span><span class="pill">OVH</span><span class="pill">Terraform</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Data Viz</h3>
+        <div class="pills">
+          <span class="pill">Power BI (DAX, RLS)</span><span class="pill">Excel</span><span class="pill">Kibana</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Versioning</h3>
+        <div class="pills">
+          <span class="pill">Git</span><span class="pill">GitHub</span>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer"><a href="index.html">← Retour Accueil</a></footer>
+  </main>
+</body>
+</html>
