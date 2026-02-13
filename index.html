@@ -4,72 +4,503 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Alexandre Bloch — Data & Machine Learning Engineer</title>
-  <meta name="description" content="Portfolio d’Alexandre Bloch — Data & Machine Learning Engineer : expérience, projets académiques, compétences, contact." />
+  <meta name="description" content="Portfolio d'Alexandre Bloch — Data & Machine Learning Engineer : expérience, projets académiques, compétences, contact." />
   <link rel="icon" type="image/png" href="assets/img/logoportfolio.png" />
-  <link rel="stylesheet" href="assets/css/style.css" />
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet"/>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+    
     :root {
-      --primary: #2563eb; --primary-dark: #1d4ed8;
-      --text-main: #1f2937; --text-muted: #4b5563;
-      --bg-body: #f9fafb; --bg-card: #ffffff;
-      --border: #e5e7eb; --radius: 0.75rem;
-      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --primary: #0ea5e9;
+      --primary-dark: #0284c7;
+      --accent: #8b5cf6;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --bg-body: #ffffff;
+      --bg-card: #f8fafc;
+      --border: #e2e8f0;
+      --radius: 1rem;
+      --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+      --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
     }
-    * { box-sizing: border-box; }
-    body { font-family: 'Inter', sans-serif; background: var(--bg-body); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
-    h1, h2, h3, .brand { font-weight: 700; letter-spacing: -0.025em; }
-    .nav { background: rgba(255,255,255,0.8); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 50; }
-    .brand { font-size: 1.25rem; color: var(--text-main); display: flex; align-items: center; gap: 0.5rem; }
-    .brand-dot { height: 8px; width: 8px; background: var(--primary); border-radius: 50%; display: inline-block; }
-    .menu a { text-decoration: none; color: var(--text-muted); font-weight: 500; margin-left: 1.5rem; transition: color 0.2s; display: flex; align-items: center; gap: 0.5rem; }
-    .menu a:hover, .menu a.active { color: var(--primary); }
-    .menu-icon { display: none; }
-    .hero { padding: 4rem 2rem; display: grid; grid-template-columns: 1fr 350px; gap: 4rem; align-items: center; }
+    
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body { 
+      font-family: 'Space Grotesk', sans-serif;
+      background: var(--bg-body);
+      color: var(--text-main);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    
+    /* Navigation */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(20px) saturate(180%);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+      animation: slideDown 0.6s ease;
+    }
+    
+    @keyframes slideDown {
+      from { transform: translateY(-100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    
+    .brand {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      letter-spacing: -0.02em;
+    }
+    
+    .brand-dot {
+      width: 12px;
+      height: 12px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.1); opacity: 0.8; }
+    }
+    
+    .menu {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+    
+    .menu a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.95rem;
+    }
+    
+    .menu a:hover,
+    .menu a.active {
+      color: var(--primary);
+      background: linear-gradient(135deg, rgba(14, 165, 233, 0.1), rgba(139, 92, 246, 0.1));
+    }
+    
+    .menu-icon { font-size: 1.2rem; }
+    .menu-text { display: inline; }
+    
+    /* Hero Section */
+    .hero {
+      padding: 4rem 0;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 4rem;
+      align-items: center;
+      animation: fadeIn 0.8s ease 0.2s both;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .kicker {
+      display: inline-block;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--primary);
+      background: linear-gradient(135deg, rgba(14, 165, 233, 0.1), rgba(139, 92, 246, 0.1));
+      padding: 0.5rem 1rem;
+      border-radius: 2rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(14, 165, 233, 0.2);
+    }
+    
+    .hero h1 {
+      font-size: 3rem;
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, var(--text-main), var(--primary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+    }
+    
+    .subtitle {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      line-height: 1.8;
+      max-width: 600px;
+    }
+    
+    .badges {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+    
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      border-radius: 2rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+    }
+    
+    .badge i {
+      color: var(--primary);
+      font-size: 1rem;
+    }
+    
+    .cta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.875rem 1.5rem;
+      border-radius: 0.75rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-size: 0.95rem;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .btn.primary {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: white;
+      box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
+    }
+    
+    .btn.primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(14, 165, 233, 0.4);
+    }
+    
+    .btn.secondary {
+      background: var(--bg-card);
+      color: var(--text-main);
+      border: 1px solid var(--border);
+    }
+    
+    .btn.secondary:hover {
+      background: white;
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+    
+    /* Profile Section */
+    .profile {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      align-items: center;
+      animation: fadeIn 0.8s ease 0.4s both;
+    }
+    
+    .avatar {
+      position: relative;
+      width: 280px;
+      height: 280px;
+      border-radius: 2rem;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      border: 4px solid white;
+      background: linear-gradient(135deg, rgba(14, 165, 233, 0.1), rgba(139, 92, 246, 0.1));
+    }
+    
+    .avatar::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .avatar:hover::before {
+      opacity: 0.1;
+    }
+    
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    
+    .avatar:hover img {
+      transform: scale(1.05);
+    }
+    
+    .avatar .placeholder {
+      display: grid;
+      place-items: center;
+      width: 100%;
+      height: 100%;
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--primary);
+    }
+    
+    .pills {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    
+    .pill {
+      display: inline-block;
+      padding: 0.375rem 0.875rem;
+      border-radius: 2rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      background: linear-gradient(135deg, rgba(14, 165, 233, 0.1), rgba(139, 92, 246, 0.1));
+      color: var(--primary);
+      border: 1px solid rgba(14, 165, 233, 0.2);
+      font-family: 'JetBrains Mono', monospace;
+    }
+    
+    .contact-info {
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+    
+    .contact-info a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    
+    .contact-info a:hover {
+      color: var(--accent);
+    }
+    
+    /* Cards Grid */
+    .cards-section {
+      padding: 3rem 0;
+      animation: fadeIn 0.8s ease 0.6s both;
+    }
+    
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+    
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+    
+    .card:hover::before {
+      transform: scaleX(1);
+    }
+    
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--primary);
+    }
+    
+    .card h2 {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    
+    .card h2 i {
+      color: var(--primary);
+      font-size: 1.5rem;
+    }
+    
+    .card ul {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .card li {
+      padding: 0.5rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+      color: var(--text-muted);
+    }
+    
+    .card li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-weight: 700;
+    }
+    
+    /* Footer */
+    .footer {
+      margin-top: 4rem;
+      padding: 2rem 0;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+    
+    /* Responsive */
+    @media (max-width: 968px) {
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 2rem 0;
+      }
+      
+      .hero h1 {
+        font-size: 2.25rem;
+      }
+      
+      .subtitle {
+        max-width: 100%;
+      }
+      
+      .cta {
+        justify-content: center;
+      }
+      
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
     @media (max-width: 768px) {
-      .hero { grid-template-columns: 1fr; text-align: center; padding: 2rem 1rem; }
-      .nav-inner { flex-direction: column; padding: 1rem; }
-      .menu { width: 100%; justify-content: space-between; margin-top: 1rem; margin-left: 0; }
-      .menu a { margin-left: 0; padding: 0.5rem; }
-      .menu-text { display: none; }
-      .menu-icon { display: block; font-size: 1.5rem; }
+      .nav-inner {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      .menu {
+        width: 100%;
+        justify-content: space-around;
+      }
+      
+      .menu a {
+        flex-direction: column;
+        padding: 0.5rem;
+        gap: 0.25rem;
+      }
+      
+      .menu-text {
+        font-size: 0.7rem;
+      }
+      
+      .hero h1 {
+        font-size: 1.75rem;
+      }
+      
+      .avatar {
+        width: 200px;
+        height: 200px;
+      }
     }
-    .kicker { text-transform: uppercase; letter-spacing: 0.1em; font-size: 1.1rem; font-weight: 700; color: var(--primary); margin-bottom: 1rem; }
-    .hero h1 { font-size: 2.5rem; line-height: 1.2; margin-bottom: 1.5rem; background: linear-gradient(to right, #111827, #4b5563); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .subtitle { font-size: 1.25rem; color: var(--text-muted); margin-bottom: 2rem; }
-    .section-title { font-size: 2rem; margin-bottom: 1.5rem; color: var(--text-main); }
-    .card, .item { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem; box-shadow: var(--shadow); margin-bottom: 2rem; transition: transform 0.2s, box-shadow 0.2s; }
-    .card:hover, .item:hover { transform: translateY(-4px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
-    .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
-    @media (max-width: 768px) {
-      .card-grid { grid-template-columns: 1fr; }
-    }
-    .meta { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
-    .pill, .badge { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; background: #eff6ff; color: var(--primary); border: 1px solid #dbeafe; margin: 0 0.5rem 0.5rem 0; }
-    .badge { background: #f3f4f6; color: var(--text-muted); border-color: #e5e7eb; }
-    .btn { display: inline-flex; align-items: center; justify-content: center; padding: 0.75rem 1.5rem; border-radius: var(--radius); font-weight: 600; text-decoration: none; transition: all 0.2s; margin-right: 0.5rem; }
-    .btn.primary { background: var(--primary); color: white; box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.3); }
-    .btn.primary:hover { background: var(--primary-dark); transform: translateY(-1px); }
-    .btn:not(.primary) { background: white; color: var(--text-main); border: 1px solid var(--border); }
-    .btn:not(.primary):hover { background: var(--bg-body); }
-    .avatar img, .avatar .placeholder { width: 100%; max-width: 280px; aspect-ratio: 1; border-radius: 20px; object-fit: cover; box-shadow: var(--shadow); transform: rotate(3deg); border: 4px solid white; }
-    .footer { margin-top: 4rem; padding: 2rem 0; border-top: 1px solid var(--border); color: var(--text-muted); text-align: center; font-size: 0.875rem; }
-    .list { padding-left: 1.5rem; } .list li { margin-bottom: 0.5rem; }
-    .profile .pills { justify-content: center; }
   </style>
 </head>
 <body>
   <header class="nav">
-    <div class="container nav-inner">
-      <div class="brand"><span class="brand-dot"></span> Alexandre Bloch</div>
-      <nav class="menu">
-        <a class="active" href="index.html"><i class="ri-home-line menu-icon"></i><span class="menu-text">Accueil</span></a>
-        <a href="experience.html"><i class="ri-briefcase-line menu-icon"></i><span class="menu-text">Expérience</span></a>
-        <a href="projets.html"><i class="ri-code-s-slash-line menu-icon"></i><span class="menu-text">Projets</span></a>
-        <a href="competences.html"><i class="ri-tools-line menu-icon"></i><span class="menu-text">Compétences</span></a>
-        <a href="loisirs.html"><i class="ri-music-line menu-icon"></i><span class="menu-text">Loisirs</span></a>
-      </nav>
+    <div class="container">
+      <div class="nav-inner">
+        <div class="brand">
+          <span class="brand-dot"></span>
+          Alexandre Bloch
+        </div>
+        <nav class="menu">
+          <a class="active" href="index.html">
+            <i class="ri-home-line menu-icon"></i>
+            <span class="menu-text">Accueil</span>
+          </a>
+          <a href="experience.html">
+            <i class="ri-briefcase-line menu-icon"></i>
+            <span class="menu-text">Expérience</span>
+          </a>
+          <a href="projets.html">
+            <i class="ri-code-s-slash-line menu-icon"></i>
+            <span class="menu-text">Projets</span>
+          </a>
+          <a href="competences.html">
+            <i class="ri-tools-line menu-icon"></i>
+            <span class="menu-text">Compétences</span>
+          </a>
+          <a href="loisirs.html">
+            <i class="ri-music-line menu-icon"></i>
+            <span class="menu-text">Loisirs</span>
+          </a>
+        </nav>
+      </div>
     </div>
   </header>
 
@@ -77,75 +508,103 @@
     <section class="hero">
       <div>
         <div class="kicker">Data & Machine Learning Engineer</div>
-        <h1>Je conçois des produits data & IA fiables, du pipeline au déploiement.</h1>
+        <h1>Je transforme vos données en solutions intelligentes et scalables</h1>
         <p class="subtitle">
-          Basé en Île-de-France, je travaille sur des pipelines ETL/BI, de la GenAI (RAG, fine-tuning),
-          et des déploiements cloud/DevOps (Docker, Nginx, GCP/OVH).
+          Spécialisé en pipelines ETL/BI, GenAI (RAG, fine-tuning) et déploiements cloud.
+          De la conception à la production, je construis des systèmes data robustes et performants.
         </p>
 
         <div class="badges">
-          <span class="badge">3 ans d’expérience</span>
-          <span class="badge">Mobilité : Paris & Petite Couronne</span>
-          <span class="badge">Dispo : mi-mars 2026</span>
+          <span class="badge">
+            <i class="ri-time-line"></i>
+            3 ans d'expérience
+          </span>
+          <span class="badge">
+            <i class="ri-map-pin-line"></i>
+            Paris & Petite Couronne
+          </span>
+          <span class="badge">
+            <i class="ri-calendar-line"></i>
+            Disponible mi-mars 2026
+          </span>
         </div>
 
         <div class="cta">
-          <a class="btn primary" href="experience.html">Voir l’expérience</a>
-          <a class="btn" href="projets.html">Voir les projets</a>
-          <a class="btn" href="mailto:bloch.alexandr@gmail.com">Me contacter</a>
+          <a class="btn primary" href="experience.html">
+            <i class="ri-briefcase-line"></i>
+            Mon expérience
+          </a>
+          <a class="btn secondary" href="projets.html">
+            <i class="ri-code-box-line"></i>
+            Mes projets
+          </a>
+          <a class="btn secondary" href="mailto:bloch.alexandr@gmail.com">
+            <i class="ri-mail-line"></i>
+            Me contacter
+          </a>
         </div>
       </div>
 
       <div class="profile">
         <div class="avatar">
-          <!-- BALISE PHOTO : mets ta photo dans assets/img/photo.jpg -->
-          <!-- Si tu n’as pas encore la photo, laisse comme ça -->
-          <img id="profile-photo" src="assets/img/photocvalex.png" alt="Photo de profil d’Alexandre Bloch" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
-          <div class="placeholder" style="display:none; place-items:center; width:100%; height:100%;">PHOTO</div>
+          <img id="profile-photo" 
+               src="assets/img/photocvalex.png" 
+               alt="Photo de profil d'Alexandre Bloch" 
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+          <div class="placeholder" style="display:none;">AB</div>
         </div>
 
         <div class="pills">
           <span class="pill">Python</span>
           <span class="pill">SQL</span>
-          <span class="pill">PyTorch / TensorFlow</span>
-          <span class="pill">Spark / Airflow</span>
-          <span class="pill">Docker / K8s</span>
+          <span class="pill">PyTorch</span>
+          <span class="pill">Spark</span>
+          <span class="pill">Docker</span>
         </div>
 
-        <div class="small">
-          <div><strong>Email</strong> : <a href="mailto:bloch.alexandr@gmail.com">bloch.alexandr@gmail.com</a></div>
-          <div><strong>GitHub</strong> : <a href="https://github.com/alexblch" target="_blank" rel="noreferrer">github.com/alexblch</a></div>
-          <div><strong>LinkedIn</strong> : <a href="https://www.linkedin.com/in/alex-bloch56" target="_blank" rel="noreferrer">/alex-bloch56</a></div>
+        <div class="contact-info">
+          <div><strong>📧</strong> <a href="mailto:bloch.alexandr@gmail.com">bloch.alexandr@gmail.com</a></div>
+          <div><strong>💻</strong> <a href="https://github.com/alexblch" target="_blank" rel="noreferrer">github.com/alexblch</a></div>
+          <div><strong>🔗</strong> <a href="https://www.linkedin.com/in/alex-bloch56" target="_blank" rel="noreferrer">linkedin.com/in/alex-bloch56</a></div>
         </div>
       </div>
     </section>
 
-    <section class="card-grid">
-      <div class="card">
-        <h2>Diplômes & certifications</h2>
-        <ul class="list">
-          <li>Mastère spécialisé IA & Big Data (ESGI Paris)</li>
-          <li>Google Cloud Machine Learning Engineer</li>
-          <li>Databricks Certified Data Engineer</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h2>Focus</h2>
-        <ul class="list">
-          <li>ETL/BI : SQL Server, Power BI (RLS), Report Server</li>
-          <li>GenAI : RAG, Hugging Face, fine-tuning</li>
-          <li>MLOps/DevOps : Docker, Kubernetes, Nginx, SSL</li>
-        </ul>
+    <section class="cards-section">
+      <div class="card-grid">
+        <div class="card">
+          <h2>
+            <i class="ri-graduation-cap-line"></i>
+            Formation & Certifications
+          </h2>
+          <ul>
+            <li>Mastère Spécialisé IA & Big Data (ESGI Paris)</li>
+            <li>Google Cloud Machine Learning Engineer</li>
+            <li>Databricks Certified Data Engineer</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h2>
+            <i class="ri-focus-3-line"></i>
+            Expertises Clés
+          </h2>
+          <ul>
+            <li>Architecture de pipelines ETL/BI scalables</li>
+            <li>GenAI : RAG, fine-tuning, NLP avancé</li>
+            <li>MLOps & DevOps : Docker, K8s, CI/CD</li>
+          </ul>
+        </div>
       </div>
     </section>
 
     <footer class="footer">
-      © <span id="y"></span> Alexandre Bloch — Portfolio hébergé sur GitHub Pages.
+      © <span id="year"></span> Alexandre Bloch — Portfolio hébergé sur GitHub Pages
     </footer>
   </main>
 
   <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
+    document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>

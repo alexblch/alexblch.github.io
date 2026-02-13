@@ -4,106 +4,501 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Expérience — Alexandre Bloch</title>
-  <meta name="description" content="Expérience professionnelle d’Alexandre Bloch (Data & Machine Learning Engineer)." />
+  <meta name="description" content="Expérience professionnelle d'Alexandre Bloch (Data & Machine Learning Engineer)." />
   <link rel="icon" type="image/png" href="assets/img/logoportfolio.png" />
-  <link rel="stylesheet" href="assets/css/style.css" />
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet"/>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+    
     :root {
-      --primary: #2563eb; --primary-dark: #1d4ed8;
-      --text-main: #1f2937; --text-muted: #4b5563;
-      --bg-body: #f9fafb; --bg-card: #ffffff;
-      --border: #e5e7eb; --radius: 0.75rem;
-      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --primary: #0ea5e9;
+      --primary-dark: #0284c7;
+      --accent: #8b5cf6;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --bg-body: #ffffff;
+      --bg-card: #f8fafc;
+      --border: #e2e8f0;
+      --radius: 1rem;
+      --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+      --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
     }
-    * { box-sizing: border-box; }
-    body { font-family: 'Inter', sans-serif; background: var(--bg-body); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
-    h1, h2, h3, .brand { font-weight: 700; letter-spacing: -0.025em; }
-    .nav { background: rgba(255,255,255,0.8); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 50; }
-    .brand { font-size: 1.25rem; color: var(--text-main); display: flex; align-items: center; gap: 0.5rem; }
-    .brand-dot { height: 8px; width: 8px; background: var(--primary); border-radius: 50%; display: inline-block; }
-    .menu a { text-decoration: none; color: var(--text-muted); font-weight: 500; margin-left: 1.5rem; transition: color 0.2s; display: flex; align-items: center; gap: 0.5rem; }
-    .menu a:hover, .menu a.active { color: var(--primary); }
-    .menu-icon { display: none; }
-    .hero { padding: 4rem 2rem; display: grid; grid-template-columns: 1fr 350px; gap: 4rem; align-items: center; }
+    
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body { 
+      font-family: 'Space Grotesk', sans-serif;
+      background: var(--bg-body);
+      color: var(--text-main);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    
+    /* Navigation */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(20px) saturate(180%);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+      animation: slideDown 0.6s ease;
+    }
+    
+    @keyframes slideDown {
+      from { transform: translateY(-100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    
+    .brand {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      letter-spacing: -0.02em;
+    }
+    
+    .brand-dot {
+      width: 12px;
+      height: 12px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.1); opacity: 0.8; }
+    }
+    
+    .menu {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+    
+    .menu a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.95rem;
+    }
+    
+    .menu a:hover,
+    .menu a.active {
+      color: var(--primary);
+      background: linear-gradient(135deg, rgba(14, 165, 233, 0.1), rgba(139, 92, 246, 0.1));
+    }
+    
+    .menu-icon { font-size: 1.2rem; }
+    .menu-text { display: inline; }
+    
+    /* Page Header */
+    .page-header {
+      padding: 3rem 0 2rem;
+      animation: fadeIn 0.8s ease;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .page-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, var(--text-main), var(--primary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.03em;
+    }
+    
+    .page-subtitle {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 700px;
+    }
+    
+    /* Timeline */
+    .timeline {
+      position: relative;
+      padding: 2rem 0;
+    }
+    
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(180deg, var(--primary), var(--accent));
+      border-radius: 2px;
+    }
+    
+    .timeline-item {
+      position: relative;
+      padding-left: 3rem;
+      margin-bottom: 3rem;
+      animation: fadeIn 0.8s ease both;
+    }
+    
+    .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+    .timeline-item:nth-child(2) { animation-delay: 0.2s; }
+    .timeline-item:nth-child(3) { animation-delay: 0.3s; }
+    
+    .timeline-dot {
+      position: absolute;
+      left: -6px;
+      top: 0.5rem;
+      width: 15px;
+      height: 15px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      border-radius: 50%;
+      box-shadow: 0 0 0 4px var(--bg-body), 0 0 0 6px var(--border);
+    }
+    
+    .experience-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .experience-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+    
+    .experience-card:hover::before {
+      transform: scaleX(1);
+    }
+    
+    .experience-card:hover {
+      transform: translateX(8px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--primary);
+    }
+    
+    .experience-header {
+      margin-bottom: 1rem;
+    }
+    
+    .experience-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    
+    .experience-title i {
+      color: var(--primary);
+      font-size: 1.75rem;
+    }
+    
+    .experience-meta {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+    
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .meta-item i {
+      color: var(--primary);
+    }
+    
+    .experience-description {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 1.5rem;
+    }
+    
+    .experience-description li {
+      padding: 0.5rem 0;
+      padding-left: 1.75rem;
+      position: relative;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+    
+    .experience-description li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+    
+    .tech-stack {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+    
+    .tech-badge {
+      display: inline-block;
+      padding: 0.375rem 0.875rem;
+      border-radius: 2rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      background: linear-gradient(135deg, rgba(14, 165, 233, 0.1), rgba(139, 92, 246, 0.1));
+      color: var(--primary);
+      border: 1px solid rgba(14, 165, 233, 0.2);
+      font-family: 'JetBrains Mono', monospace;
+    }
+    
+    /* Footer */
+    .footer {
+      margin-top: 4rem;
+      padding: 2rem 0;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+    
+    .footer a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    
+    .footer a:hover {
+      color: var(--accent);
+    }
+    
+    /* Responsive */
     @media (max-width: 768px) {
-      .hero { grid-template-columns: 1fr; text-align: center; padding: 2rem 1rem; }
-      .nav-inner { flex-direction: column; padding: 1rem; }
-      .menu { width: 100%; justify-content: space-between; margin-top: 1rem; margin-left: 0; }
-      .menu a { margin-left: 0; padding: 0.5rem; }
-      .menu-text { display: none; }
-      .menu-icon { display: block; font-size: 1.5rem; }
+      .nav-inner {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      .menu {
+        width: 100%;
+        justify-content: space-around;
+      }
+      
+      .menu a {
+        flex-direction: column;
+        padding: 0.5rem;
+        gap: 0.25rem;
+      }
+      
+      .menu-text {
+        font-size: 0.7rem;
+      }
+      
+      .page-title {
+        font-size: 2rem;
+      }
+      
+      .timeline::before {
+        left: 0;
+      }
+      
+      .timeline-item {
+        padding-left: 2.5rem;
+      }
+      
+      .experience-meta {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
     }
-    .kicker { text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.875rem; font-weight: 700; color: var(--primary); margin-bottom: 1rem; }
-    .hero h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 1.5rem; background: linear-gradient(to right, #111827, #4b5563); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .subtitle { font-size: 1.25rem; color: var(--text-muted); margin-bottom: 2rem; }
-    .section-title { font-size: 2rem; margin-bottom: 1.5rem; color: var(--text-main); }
-    .card, .item { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem; box-shadow: var(--shadow); margin-bottom: 2rem; transition: transform 0.2s, box-shadow 0.2s; }
-    .card:hover, .item:hover { transform: translateY(-4px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
-    .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
-    .meta { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
-    .pill, .badge { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; background: #eff6ff; color: var(--primary); border: 1px solid #dbeafe; margin: 0 0.5rem 0.5rem 0; }
-    .badge { background: #f3f4f6; color: var(--text-muted); border-color: #e5e7eb; }
-    .btn { display: inline-flex; align-items: center; justify-content: center; padding: 0.75rem 1.5rem; border-radius: var(--radius); font-weight: 600; text-decoration: none; transition: all 0.2s; margin-right: 0.5rem; }
-    .btn.primary { background: var(--primary); color: white; box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.3); }
-    .btn.primary:hover { background: var(--primary-dark); transform: translateY(-1px); }
-    .btn:not(.primary) { background: white; color: var(--text-main); border: 1px solid var(--border); }
-    .btn:not(.primary):hover { background: var(--bg-body); }
-    .avatar img, .avatar .placeholder { width: 100%; max-width: 280px; aspect-ratio: 1; border-radius: 20px; object-fit: cover; box-shadow: var(--shadow); transform: rotate(3deg); border: 4px solid white; }
-    .footer { margin-top: 4rem; padding: 2rem 0; border-top: 1px solid var(--border); color: var(--text-muted); text-align: center; font-size: 0.875rem; }
-    .list { padding-left: 1.5rem; } .list li { margin-bottom: 0.5rem; }
   </style>
 </head>
 <body>
   <header class="nav">
-    <div class="container nav-inner">
-      <div class="brand"><span class="brand-dot"></span> Alexandre Bloch</div>
-      <nav class="menu">
-        <a href="index.html"><i class="ri-home-line menu-icon"></i><span class="menu-text">Accueil</span></a>
-        <a class="active" href="experience.html"><i class="ri-briefcase-line menu-icon"></i><span class="menu-text">Expérience</span></a>
-        <a href="projets.html"><i class="ri-code-s-slash-line menu-icon"></i><span class="menu-text">Projets</span></a>
-        <a href="competences.html"><i class="ri-tools-line menu-icon"></i><span class="menu-text">Compétences</span></a>
-        <a href="loisirs.html"><i class="ri-music-line menu-icon"></i><span class="menu-text">Loisirs</span></a>
-      </nav>
+    <div class="container">
+      <div class="nav-inner">
+        <div class="brand">
+          <span class="brand-dot"></span>
+          Alexandre Bloch
+        </div>
+        <nav class="menu">
+          <a href="index.html">
+            <i class="ri-home-line menu-icon"></i>
+            <span class="menu-text">Accueil</span>
+          </a>
+          <a class="active" href="experience.html">
+            <i class="ri-briefcase-line menu-icon"></i>
+            <span class="menu-text">Expérience</span>
+          </a>
+          <a href="projets.html">
+            <i class="ri-code-s-slash-line menu-icon"></i>
+            <span class="menu-text">Projets</span>
+          </a>
+          <a href="competences.html">
+            <i class="ri-tools-line menu-icon"></i>
+            <span class="menu-text">Compétences</span>
+          </a>
+          <a href="loisirs.html">
+            <i class="ri-music-line menu-icon"></i>
+            <span class="menu-text">Loisirs</span>
+          </a>
+        </nav>
+      </div>
     </div>
   </header>
 
   <main class="container">
-    <h2 class="section-title">Expérience</h2>
+    <div class="page-header">
+      <h1 class="page-title">Expérience Professionnelle</h1>
+      <p class="page-subtitle">
+        Mon parcours en Data Engineering et Machine Learning, de la conception de pipelines à l'industrialisation de solutions IA.
+      </p>
+    </div>
 
-    <section class="block">
-      <div class="item">
-        <h3>Data Manager — Wilo France (Saint-Denis)</h3>
-        <div class="meta">Octobre 2024 → Septembre 2025 · Industrie (pompage / gestion des fluides)</div>
-        <ul class="list">
-          <li>Conception de pipelines ETL & BI : flux automatisés (SQL Server) + dashboards Power BI sécurisés (RLS) sur Report Server.</li>
-          <li>Industrialisation OCR : extraction de données techniques depuis des vidéos terrain, conteneurisation Docker, déploiement sécurisé (OVH, Nginx, SSL).</li>
-          <li>Transcription audio (NLP) : architecture événementielle (Webhooks, API Kizeo) avec WhisperCPP + interface web Flask.</li>
-        </ul>
-        <div class="pills">
-          <span class="pill">SQL Server</span><span class="pill">Power BI (RLS)</span><span class="pill">Python / Flask</span>
-          <span class="pill">Docker</span><span class="pill">OVH</span><span class="pill">Nginx / SSL</span>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="experience-card">
+          <div class="experience-header">
+            <h3 class="experience-title">
+              <i class="ri-database-2-line"></i>
+              Data Manager
+            </h3>
+            <div class="experience-meta">
+              <span class="meta-item">
+                <i class="ri-building-line"></i>
+                <strong>Wilo France</strong> — Saint-Denis
+              </span>
+              <span class="meta-item">
+                <i class="ri-calendar-line"></i>
+                Octobre 2024 → Septembre 2025
+              </span>
+              <span class="meta-item">
+                <i class="ri-bar-chart-line"></i>
+                Industrie (pompage / gestion des fluides)
+              </span>
+            </div>
+          </div>
+
+          <ul class="experience-description">
+            <li>
+              <strong>Architecture ETL/BI :</strong> Conception et automatisation de pipelines de données (SQL Server) avec génération de dashboards Power BI sécurisés (RLS) sur Report Server
+            </li>
+            <li>
+              <strong>Industrialisation OCR :</strong> Développement d'un système d'extraction de données techniques depuis vidéos terrain, conteneurisation Docker et déploiement sécurisé (OVH, Nginx, SSL)
+            </li>
+            <li>
+              <strong>Solution NLP de transcription :</strong> Architecture événementielle (Webhooks, API Kizeo) intégrant WhisperCPP avec interface web Flask pour traitement audio automatisé
+            </li>
+          </ul>
+
+          <div class="tech-stack">
+            <span class="tech-badge">SQL Server</span>
+            <span class="tech-badge">Power BI (RLS)</span>
+            <span class="tech-badge">Python / Flask</span>
+            <span class="tech-badge">Docker</span>
+            <span class="tech-badge">OVH Cloud</span>
+            <span class="tech-badge">Nginx / SSL</span>
+          </div>
         </div>
       </div>
 
-      <div class="item">
-        <h3>Développeur IA / Fullstack — Intellique (Suresnes)</h3>
-        <div class="meta">Octobre 2022 → Septembre 2024 · Solutions stockage & IA</div>
-        <ul class="list">
-          <li>Intégration GenAI (RAG) : assistant intelligent pour Storiq One + architecture RAG et fine-tuning (Hugging Face) sur base documentaire.</li>
-          <li>Développement fullstack : évolution front/back pour supporter les fonctionnalités IA.</li>
-          <li>Ingénierie système & hardware : assemblage/déploiement serveurs, admin Debian, environnements GPU (NVIDIA/CUDA).</li>
-        </ul>
-        <div class="pills">
-          <span class="pill">Python</span><span class="pill">Hugging Face</span><span class="pill">Linux (Debian)</span>
-          <span class="pill">CUDA</span><span class="pill">C</span><span class="pill">HTML/CSS</span>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="experience-card">
+          <div class="experience-header">
+            <h3 class="experience-title">
+              <i class="ri-brain-line"></i>
+              Développeur IA / Fullstack
+            </h3>
+            <div class="experience-meta">
+              <span class="meta-item">
+                <i class="ri-building-line"></i>
+                <strong>Intellique</strong> — Suresnes
+              </span>
+              <span class="meta-item">
+                <i class="ri-calendar-line"></i>
+                Octobre 2022 → Septembre 2024
+              </span>
+              <span class="meta-item">
+                <i class="ri-bar-chart-line"></i>
+                Solutions de stockage & IA
+              </span>
+            </div>
+          </div>
+
+          <ul class="experience-description">
+            <li>
+              <strong>Assistant GenAI (RAG) :</strong> Conception et intégration d'un assistant intelligent pour Storiq One avec architecture RAG et fine-tuning (Hugging Face) sur base documentaire technique
+            </li>
+            <li>
+              <strong>Développement fullstack :</strong> Évolution de l'architecture front/back pour supporter les nouvelles fonctionnalités IA et garantir une expérience utilisateur fluide
+            </li>
+            <li>
+              <strong>Infrastructure GPU :</strong> Assemblage et déploiement de serveurs, administration Debian, configuration d'environnements NVIDIA/CUDA pour entraînement de modèles
+            </li>
+          </ul>
+
+          <div class="tech-stack">
+            <span class="tech-badge">Python</span>
+            <span class="tech-badge">Hugging Face</span>
+            <span class="tech-badge">RAG</span>
+            <span class="tech-badge">Linux (Debian)</span>
+            <span class="tech-badge">CUDA</span>
+            <span class="tech-badge">C</span>
+            <span class="tech-badge">HTML/CSS</span>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
 
     <footer class="footer">
-      <a href="index.html">← Retour Accueil</a>
+      <a href="index.html">← Retour à l'accueil</a>
     </footer>
   </main>
 </body>
